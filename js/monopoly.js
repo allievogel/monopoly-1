@@ -2,6 +2,7 @@ var Monopoly = {};
 Monopoly.allowRoll = true;
 Monopoly.moneyAtStart = 500; // money players get at the start of the game
 Monopoly.doubleCounter = 0; // for how many times both dice numbers will be identical
+Monopoly.setGoadd = false;
 
 Monopoly.init = function(){
     $(document).ready(function(){
@@ -42,6 +43,11 @@ Monopoly.getPlayersMoney = function(player){
 
 Monopoly.updatePlayersMoney = function(player,amount){
     var playersMoney = parseInt(player.attr("data-money"));
+    playersMoney += amount;
+    Monopoly.setGoadd = false;
+
+}else;
+var playersMoney = parseInt(player.attr("data-money"));
     playersMoney -= amount;
     if (playersMoney < 0 ){
         Monopoly.showPopup("playerBroke");
@@ -333,6 +339,7 @@ Monopoly.getNextCell = function(cell){
 Monopoly.handlePassedGo = function(){
     var player = Monopoly.getCurrentPlayer();
     Monopoly.updatePlayersMoney(player,Monopoly.moneyAtStart/10);
+    Monopoly.setGoadd = true;
 };
 
 
